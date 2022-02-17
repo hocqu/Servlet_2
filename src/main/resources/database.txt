@@ -1,0 +1,49 @@
+create table dish (
+id int (10) AUTO_INCREMENT,
+name varchar(100) NOT NULL,
+ingridients varchar(200) NOT NULL,
+receipt varchar(3000) NOT NULL,
+PRIMARY KEY (id)
+);
+
+INSERT INTO dish (NAME,ingridients,receipt)
+VALUES ('Potato pancakes','potatoes,flour,onions,eggs,oil,milk',
+ 'Grate potatoes and give the mass a good squeeze.Put potatoes into the large bowl,
+  add an onion, egg, flour, salt, milk, oil and pepper.Heat some oil in the frying pan.
+  Put some potato mass onto the frying pan with the tablespoon.
+   Fry draniki for 2-3 minutes, then flip then and fry on the other side.Serve hot with sour cream.');
+INSERT INTO dish (NAME,ingridients,receipt)
+   VALUES ('Meat dumplings','flour,onions,eggs,oil', '3 glasses of flour sift into the bowl.
+   Blend the eggs with salt in another bowl.Pour the eggs into the bowl with the flour and add some water.
+   Mix the mass until the dough is homogeneous.
+   Let the dough stand still for 20 minutes.Place the dough on the table, add some more flour if necessary and knead it for 10 minutes.
+   Put the dough into the plastic bag and place it into the fridge.
+   Take the minced meat and add chopped onions, salt and pepper to prepare the stuffing for pelmeni.
+   Dust the table with flower. Make the roll from the dough and cut it into small pieces.
+   Then make the dough pieces flat and thin.
+   Place some minced meat into the center of a piece of dough piece and pinch edges with the help of the fork or with your fingertips.
+   Repeat this step for the rest of the dough and minced meat.Boil the water and put pelmeni into it. Add some salt and a bay leaf.
+   Serve hot with sour cream or butter');
+INSERT INTO dish (NAME,ingridients,receipt)
+   VALUES ('Berries miracle','flour,sugar,eggs,butter,condensed milk,baking powder,vanilla sugar,gelatin,powdered sugar,lemon juice,berries', 'Blend 2 yolks and whites, add the sugar, vanilla, 150 grams of condensed milk and sifted flour with baking powder. Mix.
+   Pour the dough into the baking dish and put in the oven at 170-180 degrees. When the cake is golden brown, it’s ready.
+   150 grams of condensed milk mix with butter and whip them with the mixer.
+   Berries (cranberries, currants, sea buckthorn) wipe through a sieve with sugar add the gelatin to make jelly.
+   Baked sponge cake cut in half. Put the jelly onto the lower part and let it to harden. Cover the cake with the top part of sponge cake.
+   Prepare frosting from sugar with 1 egg white. Smear the top layer. The sides of the cake coat with melted chocolate.
+   Decorate the cake with ornaments made of chocolate.
+   Serve with tea or coffee.');
+INSERT INTO dish (NAME,ingridients,receipt)
+   VALUES ('Russian beet soup','beet,beef,oil,onions,carrots,bay leaves,garlic,tomato paste,salt', 'Put the beet into a saucepan filled with water. Boil until it’s fully prepared.
+   Take another saucepan and place the meat into it. Simmer the beef for an hour and a half. Add a little salt and some spices (if you wish).
+   Grate the carrot.
+   Grate the boiled beet.
+   Chop the cabbage.
+   Chop the onions.
+   Fry the onions in the frying pan (with oil) for some minutes.
+   Put the cabbage into the frying pan, add some salt and cook for 5-7 minutes.
+   Add the carrots and the tomato paste, stir, cover with a lid and stew for 5 minutes.
+   Squeeze the garlic and add a bit of parsley.
+   Take the beef out of the water. Cut the meat. Put the vegetables and the bay leaf into the broth. Boil for half an hour.
+   At the end, add the beet and the meat into the borsch.
+   Serve with sour cream and bread.');
