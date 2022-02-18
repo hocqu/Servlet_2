@@ -1,5 +1,5 @@
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="hocqu.Entities.Model" %>
+<%@ page import="hocqu.entities.Model" %>
 <html>
     <head>
         <title>Add products</title>

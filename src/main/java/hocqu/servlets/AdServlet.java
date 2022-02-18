@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public class AddServlet extends HttpServlet {
+public class AdServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     }
@@ -68,7 +68,7 @@ public class AddServlet extends HttpServlet {
             String receipt="empty";
             for (int i = 0; i < dishes.size(); i++) {
                 if(dishes.get(i).getName().equals(pair.getKey())){
-        receipt=dishes.get(i).getReceipt();}
+        receipt=dishes.get(i).getRecipe();}
             }
             pw.println("<tr>");
             pw.println("<td>"+pair.getValue()+"</td>");

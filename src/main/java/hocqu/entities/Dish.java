@@ -1,14 +1,14 @@
 package hocqu.entities;
 
 public class Dish {
-    private String composition;
     private String name;
-    private String receipt;
+    private String composition;
+    private String recipe;
 
-    public Dish(String name,String composition,String receipt) {
+    public Dish(String name,String composition,String recipe) {
         this.name = name;
         this.composition = composition;
-        this.receipt = receipt;
+        this.recipe = recipe;
     }
 
     public String getComposition() {
@@ -27,11 +27,12 @@ public class Dish {
         this.name = name;
     }
 
-    public String getReceipt() {
-        return receipt;
+    public String getRecipe() {
+        return recipe;
     }
 
-    public void setReceipt(String receipt) {
-        this.receipt = receipt;
+    public void setRecipe(String recipe) {
+        this.recipe = recipe;
     }
+
 }

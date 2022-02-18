@@ -5,10 +5,26 @@
          version="4.0">
     <servlet>
         <servlet-name>add</servlet-name>
-        <servlet-class>hocqu.servlets.AddServlet</servlet-class>
+        <servlet-class>hocqu.servlets.AdServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>add</servlet-name>
         <url-pattern>/add</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>test</servlet-name>
+        <servlet-class>hocqu.servlets.AvaibleDishServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>test</servlet-name>
+        <url-pattern>/test</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>expired</servlet-name>
+        <servlet-class>hocqu.servlets.ContainsExpiredProduct</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>expired</servlet-name>
+        <url-pattern>/expired</url-pattern>
     </servlet-mapping>
 </web-app>
