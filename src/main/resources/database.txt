@@ -47,3 +47,44 @@ INSERT INTO dish (NAME,ingridients,receipt)
    Take the beef out of the water. Cut the meat. Put the vegetables and the bay leaf into the broth. Boil for half an hour.
    At the end, add the beet and the meat into the borsch.
    Serve with sour cream and bread.');
+INSERT INTO dish (NAME,ingridients,receipt)
+   VALUES ('French cheese soup with chicken','Chicken fillet,cheese,Potatoes,onions,carrots,Butter,Salt,pepper,Bay leaf', 'Put the meat in a 3-liter saucepan and pour water. As soon as the broth begins to boil, add 1 teaspoon of salt, a couple of peas of allspice and black pepper, 2-3 leaves of bay leaf. Cook from the moment of boiling for 20 minutes. Then remove the meat.
+   Peel the potato and cut into cubes. Cut the onion into cubes. Grate the carrots. Cut the meat into small pieces. Processed cheese (if in the form of a block) grate or cut into cubes.
+   Add potatoes to the boiling broth. From the moment of boiling 5-7 minutes.
+   IN this time, make a weak frying in butter. First put the onion, then the carrot. Add a little salt and pepper. Add the finished roast to the soup and cook for another 5-7 minutes.
+   Then add the chopped meat. Cook for 3-4 minutes, add the melted cheese, stir well and turn off the heat.
+   Sprinkle with herbs before serving. If desired, serve with croutons.');
+INSERT INTO dish (NAME,ingridients,receipt)
+   VALUES ('Olivier','potatoes,carrots,eggs,green peas,pickles,sausages,onions,pepper,mayonnaise', 'Wash potatoes and carrots with a brush and boil in salted water until tender. Boil the eggs separately, preventing the yolk from digesting. Peel and cut into cubes with a side of 5 mm. Cut the ham into the same cubes.
+   Mix all the ingredients in a salad bowl, add finely chopped green onions and dill. Season with black pepper, season with mayonnaise and refrigerate.
+   If there are pickles with large seeds, remove them. Then cut into cubes of the same size. Put it in a separate container. Drain the liquid from the peas, transfer the peas to a separate container.
+   Before serving, add pickles and green peas to the salad. Mix the salad again, taste and, if necessary, add salt and black pepper.');
+INSERT INTO dish (NAME,ingridients,receipt)
+      VALUES ('Banana popsicle','chocolate,oil,bananas,hazelnuts',
+      'Peel the bananas, cut them in half crosswise and insert an ice cream stick into each half.
+      Cover a flat dish or tray with a sheet of parchment, lay out the bananas and place in the freezer for 15 minutes.
+      Chop the nuts with a knife into small crumbs. Break the chocolate into small pieces, melt in a water bath, add vegetable oil, mix.
+      Dip each banana in chocolate, let the chocolate harden. Once again dip the "popsicle" in chocolate, and then roll in nuts.
+      Put the bananas on a platter and place in the freezer for 30 minutes.');
+INSERT INTO dish (NAME,ingridients,receipt)
+      VALUES ('Pizza with smoked sausage and cheese','sausage,cheese,Tomato sauce,yeasts,Flour,Salt,oil',
+      'Prepare pizza dough with smoked sausage and cheese.
+      First, pour dry yeast into a small bowl, pour 3 tablespoons of warm water and mix. Leave for 15 minutes to let the yeast work.
+      Sift the flour into a large bowl with a slide. Make a recess on top, pour in the yeast diluted in water and the remaining warm water.
+      Then, with a fork or hand, start kneading the pizza dough.
+      Mix in a circle in one direction, grabbing the flour from the walls of the "slide".
+      When almost all the flour is added, pour in 1 tbsp olive oil. Add salt. Knead for about 10 minutes.
+      The dough should become smooth and elastic. Form a ball from the pizza dough. Brush it with the remaining oil.
+      Tighten the bowl with cling film. Remove the dough to a warm place and leave for 1-1.5 hours, until the volume increases by 2 times.
+      Heat the oven to 220 ° C. Knead the pizza dough and knead it lightly. Roll out into a round thin cake with a diameter of 25-30 cm .
+      Place on a baking sheet lined with baking paper. Prepare the pizza filling. Grate the hard cheese on a fine or medium grater.
+      Cut the smoked sausage into thin slices. Brush the tortilla with tomato sauce and sprinkle with two thirds of grated cheese.
+      Spread out the pieces of smoked sausage, sprinkle with the remaining cheese and bake in the oven for 10-15 minutes. Serve hot.');
+INSERT INTO dish (NAME,ingridients,receipt)
+      VALUES ('Cookies with chocolate','flour,eggs,butter,salt,baking powder,chocolate,sugar',
+      'Melt the butter. Beat it together with sugar with a whisk until completely dissolved.
+      Beat the egg and stir everything together. Add flour, salt and baking powder.
+      Mix in the chocolate chips. The dough is not sticky, it is well collected in a lump.
+      Roll the dough into small balls or cut out the shape of hearts.
+      Put the cookies on a baking sheet lined with foil( or baking paper) or on a silicone mat.
+      Bake at 180 degrees for 15-20 minutes.');

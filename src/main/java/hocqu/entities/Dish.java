@@ -1,5 +1,7 @@
 package hocqu.entities;
 
+import java.util.Objects;
+
 public class Dish {
     private String name;
     private String composition;
@@ -34,5 +36,4 @@ public class Dish {
     public void setRecipe(String recipe) {
         this.recipe = recipe;
     }
-
 }
