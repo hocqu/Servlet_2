@@ -18,18 +18,73 @@ import java.util.*;
 
 public class DishesServlet extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Gson gson = new Gson();
         PrintWriter pw = resp.getWriter();
         resp.setContentType("application/json");
         String pathInfo = req.getPathInfo();
         String[] enteredIngredients = req.getParameterValues("ingr");
-        String[] productParameters;
-        String delimiter = ",";
-        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
+        ArrayList<Product> listOfAllProducts=createDishList(enteredIngredients);
+        DishRepo dishRepo = null;
+        try {
+            dishRepo = new DishRepo();
+        } catch (SQLException e) {
+            log("Database isn't available");
+        }
+        List<Dish> avaibleDishes = dishRepo.findAvaibleDishes(enteredIngredients);
+        String[] usedProducts;
+        if (pathInfo.equals("/avaible")) {
+            for (Dish dish : avaibleDishes) {
+                pw.println(gson.toJson(dish));
+            }
+        } else {
+            if (pathInfo.equals("/expired")) {
+                Map<Dish, Integer> countOfExpiredProduct=findCountOfExpiredProductInDishes(listOfAllProducts,avaibleDishes);
+                int maxCountOfExpiredProduct = 0;
+                for (Map.Entry<Dish, Integer> dishesWithCount : countOfExpiredProduct.entrySet()) {
+                    if (dishesWithCount.getValue() > maxCountOfExpiredProduct) {
+                        maxCountOfExpiredProduct = dishesWithCount.getValue();
+                    }
+                }
+                for (Map.Entry<Dish, Integer> dishesWithCount : countOfExpiredProduct.entrySet()) {
+                    if (dishesWithCount.getValue() == maxCountOfExpiredProduct) {
+                        pw.println(gson.toJson(dishesWithCount.getKey()));
+                    }
+                }
+            }
+        }
+    }
+
+    private Map<Dish, Integer> findCountOfExpiredProductInDishes(ArrayList<Product> allProducts, List<Dish> dishesAvailableToCooking) {
+        Calendar expireTime = Calendar.getInstance();
+        expireTime.add(Calendar.DAY_OF_MONTH, 3);
+        Map<Dish, Integer> countOfExpiredProduct = new HashMap<>();
+        for (Product product : allProducts) {
+            if (product.getExpirationDate().before(expireTime) && product.getExpirationDate().after(Calendar.getInstance())) {
+                for (Dish dish : dishesAvailableToCooking) {
+                    int count = 1;
+                    String[] usedProducts = dish.getComposition().split(",");
+                    for (String name : usedProducts) {
+                        if (name.toLowerCase().equals(product.getName())) {
+                            if (countOfExpiredProduct.get(dish) != null) {
+                                count = countOfExpiredProduct.get(dish);
+                                count++;
+                            }
+                            countOfExpiredProduct.put(dish, count);
+                        }
+                    }
+                }
+            }
+        }
+        return countOfExpiredProduct;
+    }
+
+    private ArrayList<Product> createDishList(String[] ingredients) {
         ArrayList<Product> allProducts = new ArrayList<>();
-        for (String ingredient : enteredIngredients) {
-            productParameters = ingredient.split(delimiter);
+        String[] productParameters;
+        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
+        for (String ingredient : ingredients) {
+            productParameters = ingredient.split(",");
             Date formatedDate = null;
             if (productParameters.length == 1) {
                 formatedDate = new Date();
@@ -47,68 +102,6 @@ public class DishesServlet extends HttpServlet {
                 allProducts.add(product);
             }
         }
-        DishRepo dishRepo = null;
-        try {
-            dishRepo = new DishRepo();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        List<Dish> dishes = dishRepo.findAll();
-        Set<Dish> avaibleDishes = new HashSet<>();
-        String[] usedProducts;
-        for (Dish dish : dishes) {
-            boolean avaible = true;
-            usedProducts = dish.getComposition().split(delimiter);
-            int countOfMatches = 0;
-            for (String usedProduct : usedProducts) {
-                for (Product personalProduct : allProducts) {
-                    if (usedProduct.toLowerCase().equals(personalProduct.getName().toLowerCase()))
-                        countOfMatches++;
-                }
-            }
-            if (countOfMatches == usedProducts.length) {
-                avaibleDishes.add(dish);
-            }
-        }
-
-        if (pathInfo.equals("/avaible")) {
-            for (Dish dish : avaibleDishes) {
-                pw.println(gson.toJson(dish));
-            }
-        } else {
-            if (pathInfo.equals("/expired")) {
-                Calendar expireTime = Calendar.getInstance();
-                expireTime.add(Calendar.DAY_OF_MONTH, 3);
-                Map<Dish, Integer> countOfExpiredProduct = new HashMap<>();
-                for (Product product : allProducts) {
-                    if (product.getExpirationDate().before(expireTime) && product.getExpirationDate().after(Calendar.getInstance())) {
-                        for (Dish dish : avaibleDishes) {
-                            int count = 1;
-                            usedProducts = dish.getComposition().split(delimiter);
-                            for (String name : usedProducts) {
-                                if (name.toLowerCase().equals(product.getName())) {
-                                    if (countOfExpiredProduct.get(dish) != null) {
-                                        count = countOfExpiredProduct.get(dish);
-                                        count++;
-                                    }
-                                    countOfExpiredProduct.put(dish, count);
-                                }
-                            }
-                        }
-                    }
-                }
-                int maxCountOfExpiredProduct = 0;
-                for (Map.Entry<Dish, Integer> dishesWithCount : countOfExpiredProduct.entrySet()) {
-                    if (dishesWithCount.getValue() > maxCountOfExpiredProduct) {
-                        maxCountOfExpiredProduct = dishesWithCount.getValue();
-                    }
-                }
-                for (Map.Entry<Dish, Integer> dishesWithCount : countOfExpiredProduct.entrySet()) {
-                    if (dishesWithCount.getValue() == maxCountOfExpiredProduct) {
-                        pw.println(gson.toJson(dishesWithCount.getKey()));
-                    }
-                }
-            }
-        }
+        return allProducts;
     }
 }
