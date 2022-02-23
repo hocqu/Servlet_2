@@ -33,19 +33,19 @@ public class DishRepo extends BaseRepo {
 
     public List<Dish> findAvaibleDishes(String[] productsWithExpiredDate) {
         List<Dish> dishes = new ArrayList<>();
-            Dish dish = null;
-            String request = "select * from dish where";
-            List<String> products=new ArrayList<String>();
-            for(String productWithDate : productsWithExpiredDate){
-                products.add(productWithDate.split(",")[0]);
+        Dish dish = null;
+        String request = "select * from dish where";
+        List<String> products = new ArrayList<String>();
+        for (String productWithDate : productsWithExpiredDate) {
+            products.add(productWithDate.split(",")[0]);
+        }
+        for (int i = 0; i < productsWithExpiredDate.length; i++) {
+            if (i == 0) {
+                request = request + " (ingridients like '%" + products.get(i) + "%')";
+            } else {
+                request = request + " or (ingridients like '%" + products.get(i) + "%')";
             }
-            for (int i = 0; i < productsWithExpiredDate.length; i++) {
-                    if (i == 0) {
-                        request = request + " (ingridients like '%" + products.get(i) + "%')";
-                    } else {
-                        request = request + " or (ingridients like '%" + products.get(i) + "%')";
-                    }
-                }
+        }
         try {
             PreparedStatement pr = connection.prepareStatement(request);
             ResultSet rs = pr.executeQuery();

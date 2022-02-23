@@ -7,7 +7,7 @@ public class Dish {
     private String composition;
     private String recipe;
 
-    public Dish(String name,String composition,String recipe) {
+    public Dish(String name, String composition, String recipe) {
         this.name = name;
         this.composition = composition;
         this.recipe = recipe;

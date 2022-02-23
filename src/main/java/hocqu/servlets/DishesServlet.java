@@ -24,7 +24,7 @@ public class DishesServlet extends HttpServlet {
         resp.setContentType("application/json");
         String pathInfo = req.getPathInfo();
         String[] enteredIngredients = req.getParameterValues("ingr");
-        ArrayList<Product> listOfAllProducts=createDishList(enteredIngredients);
+        ArrayList<Product> listOfAllProducts = createDishList(enteredIngredients);
         DishRepo dishRepo = null;
         try {
             dishRepo = new DishRepo();
@@ -39,7 +39,7 @@ public class DishesServlet extends HttpServlet {
             }
         } else {
             if (pathInfo.equals("/expired")) {
-                Map<Dish, Integer> countOfExpiredProduct=findCountOfExpiredProductInDishes(listOfAllProducts,avaibleDishes);
+                Map<Dish, Integer> countOfExpiredProduct = findCountOfExpiredProductInDishes(listOfAllProducts, avaibleDishes);
                 int maxCountOfExpiredProduct = 0;
                 for (Map.Entry<Dish, Integer> dishesWithCount : countOfExpiredProduct.entrySet()) {
                     if (dishesWithCount.getValue() > maxCountOfExpiredProduct) {

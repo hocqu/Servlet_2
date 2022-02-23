@@ -39,11 +39,11 @@ public class Model {
         model.remove(id);
     }
 
-    public void clear(){
+    public void clear() {
         model.clear();
     }
 
-    public boolean find(String name){
+    public boolean find(String name) {
         return model.contains(name.toLowerCase());
     }
 }
