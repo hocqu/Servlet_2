@@ -5,6 +5,17 @@ ingridients varchar(200) NOT NULL,
 receipt varchar(3000) NOT NULL,
 PRIMARY KEY (id)
 );
+create table product (
+id int (10) AUTO_INCREMENT,
+name varchar(30) NOT NULL,
+PRIMARY KEY (id)
+);
+create table dishProduct (
+id_dish int,
+id_product int,
+FOREIGN KEY (id_dish) REFERENCES dish (id),
+FOREIGN KEY (id_product) REFERENCES product (id)
+)
 
 INSERT INTO dish (NAME,ingridients,receipt)
 VALUES ('Potato pancakes','potatoes,flour,onions,eggs,oil,milk',
@@ -88,3 +99,13 @@ INSERT INTO dish (NAME,ingridients,receipt)
       Roll the dough into small balls or cut out the shape of hearts.
       Put the cookies on a baking sheet lined with foil( or baking paper) or on a silicone mat.
       Bake at 180 degrees for 15-20 minutes.');
+insert into product(name) values ('potatoes'),('flour'),('onions'),('eggs'),('oil'),('milk'),('apples'),
+      ('sugar'),('butter'),('condensed milk'),('baking powder'),('vanilla sugar'),('gelatin'),('powdered sugar'),
+      ('lemon juice'),('berries'),('beet'),('beef'),('carrots'),('bay leaves'),('garlic'),('tomato paste'),('salt'),
+      ('chicken fillet'),('cheese'),('pepper'),('green peace'),('pickles'),('sausages'),('mayonnaise'),('chocolate'),('bananas'),
+      ('hazelnuts'),('yeasts');
+insert into dishproduct(id_dish,id_product) values (1,1),(1,2),(1,3),(1,4),(1,5),(1,6),(2,2),(2,3),(2,4),
+(2,5),(3,2),(3,7),(3,8),(3,9),(4,2),(4,8),(4,4),(4,9),(4,10),(4,11),(4,12),(4,13),(4,14),(4,15),(4,16),(5,17),
+(5,18),(5,5),(5,3),(5,19),(5,20),(5,21),(5,22),(5,23),(6,24),(6,25),(6,1),(6,3),(6,19),(6,9),(6,23),(6,23),(6,20),
+(7,1),(7,19),(7,4),(7,27),(7,28),(7,29),(7,3),(7,26),(7,30),(8,31),(8,5),(8,32),(8,33),(9,29),(9,25),(9,22),(9,34),
+(9,2),(9,23),(9,5),(10,2),(10,4),(10,9),(10,11),(10,31),(10,8);
